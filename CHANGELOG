@@ -1,0 +1,20 @@
+## v0.8.0-dev 17th Dec 2014
+
+* Enhancements
+  * [Router] `protect_from_forgery` has been added to the Router for CSRF protection. This is automatically plugged in new projects. See [this example](https://github.com/phoenixframework/phoenix/blob/ce5ebf3d9de4412a18e6325cd0d34e1b9699fb5a/priv/template/web/router.ex#L7) for plugging in your existing router pipeline(s).
+
+* Backwards incompatible changes
+  * Endpoints should now be explicitly started in your application supervision tree. Just add `worker(YourApp.Endpoint, [])` to your supervision tree in `lib/your_app.ex`
+  * `mix phoenix.start` was renamed to `mix phoenix.server`
+
+  * The `YourApp.Endpoint.start/0` function was removed. You can simply remove it from your `test/test_helper.ex` file
+
+  * Generated named paths now expect a conn arg. For example, `MyApp.Router.Helpers.page_path(conn, :show, "hello")` instead of `MyApp.Router.Helpers.page_path(:show, "hello")`
+
+    * To use a route helper, use the following syntax:
+
+    ```
+    HelloPhoenix.Router.Helpers.page_path(__MODULE__,:index)
+    ```
+
+
