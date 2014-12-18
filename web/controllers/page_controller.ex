@@ -1,6 +1,5 @@
 defmodule HelloPhoenix.PageController do
   use Phoenix.Controller
-  alias Phoenix.Controller.Flash
   alias HelloPhoenix.Router.Helpers
 
   plug :action
@@ -21,4 +20,14 @@ defmodule HelloPhoenix.PageController do
   def redirect_test(conn, _params) do
     text conn, "Redirect!"
   end
+
+  def test(conn,_params) do
+    controller = controller_module(conn)
+    action = action_name(conn)
+
+    Phoenix.PubSub.broadcast "logging", {:action, controller: controller, action: action}
+
+    render conn, :test
+  end
+
 end

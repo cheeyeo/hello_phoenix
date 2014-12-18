@@ -25,3 +25,10 @@ http://localhost:4000?format=text&message=CrazyTown
 
 http://localhost:4000
 ```
+
+## Templates
+
+* Passing data into templates is via the assigns map hence keys need to be preceded
+  with '@'
+
+

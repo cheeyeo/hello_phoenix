@@ -1,0 +1,7 @@
+.jumbotron
+  %p= handler_info @conn
+
+  %h3 Keys for the conn Struct
+
+  - for key <- connection_keys @conn do
+    = render HelloPhoenix.SharedView, "_key.html", key: key

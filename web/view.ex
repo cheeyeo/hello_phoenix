@@ -7,6 +7,7 @@ defmodule HelloPhoenix.View do
     quote do
       # Import common functionality
       import HelloPhoenix.Router.Helpers
+      import Phoenix.Controller, only: [action_name: 1, controller_module: 1]
 
       # Use Phoenix.HTML to import all HTML functions (forms, tags, etc)
       use Phoenix.HTML
@@ -17,17 +18,13 @@ defmodule HelloPhoenix.View do
   end
 
   # Functions defined here are available to all other views/templates
-
-  def root_path do
-    HelloPhoenix.Router.Helpers.page_path(__MODULE__,:index)
+  def handler_info(conn) do
+    "Request Handled By: #{controller_module conn}.#{action_name conn}"
   end
 
-  def hello_path do
-    HelloPhoenix.Router.Helpers.hello_path(__MODULE__,:index)
-  end
 
-  def hello_path(param) do
-    HelloPhoenix.Router.Helpers.hello_path(__MODULE__,:show, param)
+  def title do
+    "Awesome new title"
   end
 
   def show_messenger(msg) do
