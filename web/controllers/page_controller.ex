@@ -25,6 +25,8 @@ defmodule HelloPhoenix.PageController do
     controller = controller_module(conn)
     action = action_name(conn)
 
+    # example of pubsub behavior which is uni-directional
+    # this needs to be added to every method !
     Phoenix.PubSub.broadcast "logging", {:action, controller: controller, action: action}
 
     render conn, :test
