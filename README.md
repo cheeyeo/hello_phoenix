@@ -1,5 +1,7 @@
 # HelloPhoenix
 
+## A playground for phoenix web framework by following the tutorial on [http://www.phoenixframework.org](http://www.phoenixframework.org)
+
 To start your new Phoenix application:
 
 1. Install dependencies with `mix deps.get`
