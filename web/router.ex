@@ -1,5 +1,8 @@
 defmodule HelloPhoenix.Router do
   use Phoenix.Router
+  use Phoenix.Router.Socket, mount: "/ws"
+
+  channel "channel", HelloPhoenix.MyChannel
 
   pipeline :browser do
     plug :accepts, ~w(html text json)
@@ -17,6 +20,7 @@ defmodule HelloPhoenix.Router do
     get "/", PageController, :index
     get "/redirect_test", PageController, :redirect_test, as: :redirect_test
     get "/test", PageController, :test
+    get "/socket", PageController, :socket
 
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show

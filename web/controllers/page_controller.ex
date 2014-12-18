@@ -30,4 +30,9 @@ defmodule HelloPhoenix.PageController do
     render conn, :test
   end
 
+  def socket(conn,_params) do
+    render conn, :socket
+  end
+
+
 end
